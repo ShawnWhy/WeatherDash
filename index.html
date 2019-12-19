@@ -1,0 +1,54 @@
+<html>
+
+
+
+<head>
+    <link href="assets/style.css" type="text/css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/moment.js"></script>
+
+</head>
+<body>
+<div id="shipContainer">
+   <div id="optionContainer">
+        <form id="choiceForm">
+            <p>longetude</p>
+            <input class="inputs longetude" type="number">
+            <p>latitude</p>
+            <input class="inputs lattitude" type="number">
+            <input class="inputs cityInPut" type="text" placeholder="city">
+            <input class="inputs countryInput" type="text" placeholder="country">
+            <input class="inputs zipCode" type="text" placeholder="zipcode">
+            
+            <button id="openWindow">OPEN WINDOW</button>
+            <input id="weatherSubmit" type="submit">
+        </form>
+        
+    </div>
+    <div id="fiveDayHolder"></div> 
+    
+
+    <div id="windowRound">  
+        <div id="displayScreen">
+        <div class="windowDisplay cityAndCountry">Moscow, Russia</div>
+        <div class="windowDisplay locationTime">placeholder</div>
+        <div class="windowDisplay weatherMain">
+            <div class="windowDisplay SubDisplay temperature">31C</div>
+            <div class="windowDisplay subDisplay rainSunSnowCloud">cloudy</div>
+            <div class="windowDisplay SubDisplay wind">wind:33mph, NE</div>
+            <div class="windowDisplay subDIsplay humidity"></div>
+        </div>
+        
+
+        </div>
+        <div id="windowImage"></div>
+    </div>
+       
+<div id="historyContainer"></div>
+
+</div>
+
+
+<script src="assets/script.js" type="text/javascript"></script>
+</body>
+</html>
