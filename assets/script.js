@@ -102,7 +102,7 @@ function DisplayFiveDays(){
       futureDayDiv.addClass("futureDayDiv");
       
           var futuredayDateSecondAdjusted= response.list[i].dt+response.city.timezone;
-          console.log("futuredaySeconds"+futuredayDateSecondAdjusted);
+          // console.log("futuredaySeconds"+futuredayDateSecondAdjusted);
           var futureDaytoString=new Date(futuredayDateSecondAdjusted*1000).toDateString();
           futureDaytoString=moment.utc(futureDaytoString).format("LL");
           var futureDate = $("<div>");
@@ -145,7 +145,7 @@ function DisplayFiveDays(){
   )}
 
   function saveHistory(response){
-    alert("heeeyy")
+    // alert("heeeyy")
     if (searchHistory===null){
       return null
     };
@@ -157,7 +157,7 @@ function DisplayFiveDays(){
       searchHistory[i]=seachHistory[i+1]};
     }
     // console.log("Heloooooooo")
-    console.log(searchHistory);
+    // console.log(searchHistory);
     localStorage.setItem("searchHistory",JSON.stringify(searchHistory));
     searchHistory= [JSON.parse(localStorage.getItem("searchHistory"))];
   }
@@ -198,15 +198,15 @@ $.ajax({
           method: "GET"
         }).then(function(response) {
     
-          console.log(queryURL);
-          console.log(response);
+          // console.log(queryURL);
+          // console.log(response);
           $(".cityAndCountry").text(response.name + response.sys.country);
           $(".wind").text("windspeed :"+response.wind.speed);
           $(".humidity").text("humidity :"+response.main.humidity);
            var tempF = Math.floor((response.main.temp-273.15)*1.80+31);
            $(".temperature").text("temperature :"+tempF+"F");
            var localHours = response.dt+response.timezone;
-           alert("localhours!"+localHours);
+          //  alert("localhours!"+localHours);
 
            var localDay = new Date(localHours*1000).toUTCString();
            localDay=moment.utc(localDay).format("LT");
