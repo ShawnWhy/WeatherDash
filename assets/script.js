@@ -51,12 +51,18 @@
 
 // </html> 
 // JSON.parse(localStorage.getItem("searchHistory"))
-var searchHistory 
-if(localStorage.getItem("searcHistory")){
-  searchHistory = JSON.parse(localStorage.getItem("searcHistory"));
+// var searchHistoryObject={};
+var myLocation;
+var searchHistoryObject ;
+var searchHisoryObject;
+if(localStorage.getItem("searcHistoryObject")){
+  searchHistoryObject = JSON.parse(localStorage.getItem("searcHistory"))
+  searchHistory=searchHistoryObject.array;
 }else{
-  searchHistory= []
-}
+  searchHistoryObject= {};
+  searchHistory=[];
+
+};  
 var APIKey = "166a433c57516f51dfab1f7edaed8413";
 var queryURL;
 var cityInput;
@@ -65,6 +71,8 @@ var longetudeInput;
 var latitudeInput;
 var zipInput;
 var weatherImage;
+
+
 // var todayTime=new Date();
 // alert(todayTime);
 
@@ -156,10 +164,16 @@ function DisplayFiveDays(){
       for(var i=0;i<searchHistory.length;i++){
       searchHistory[i]=seachHistory[i+1]};
     }
-    // console.log("Heloooooooo")
-    // console.log(searchHistory);
-    localStorage.setItem("searchHistory",JSON.stringify(searchHistory));
-    searchHistory= [JSON.parse(localStorage.getItem("searchHistory"))];
+    console.log("Heloooooooo")
+    console.log(searchHistory);
+    searchHistoryObject={"array":searchHistory};
+    console.log(searchHistoryObject);
+
+    localStorage.setItem("searchHistoryObject",JSON.stringify(searchHistoryObject) );
+    searchHistoryObject= JSON.parse(localStorage.getItem("searchHistoryObject"));
+    searchHistory=searchHistoryObject.array;
+    console.log("Heloooooooo2");
+    console.log(searchHistory);
   }
   function deployHistory(){
     if (searchHistory!==null){
@@ -169,7 +183,7 @@ function DisplayFiveDays(){
       var newBubble = $("<div>");
       newBubble.addClass("bubble");
       var historyCityName = $("<div>");
-      historyCityName.html(SearchHistory[i].name)
+      historyCityName.html(searchHistory[i].name);
       newBubble.append(historyCityName);
       $("#historyContainer").append(newBubble);
       
@@ -177,6 +191,33 @@ function DisplayFiveDays(){
 
     }
   }}
+
+  // var x = document.getElementById("demo");
+  // function getLocation() {
+  //     if (navigator.geolocation) {
+  //         navigator.geolocation.getCurrentPosition(showPosition);
+  //     } else { 
+  //         x.innerHTML = "Geolocation is not supported by this browser.";
+  //     }
+  // }
+
+  // function showPosition(position) {
+  //     x.innerHTML = "Latitude: " + position.coords.latitude + 
+  //                   "<br>Longitude: " + position.coords.longitude;    
+//  
+  
+    // function getLocation(){
+    //   if (navigator.geolocation){
+    //     navigator.geolocation.getCurrentPosition(openWindow);
+    //   }
+    //   else(alert("no geolocation"));
+    // }
+   
+
+
+  
+
+  $("#openWindow").on("click",openWindow);
   // $("div :last-child").remove();
 //calls the API address and deploy the informatiom to the window
 function displayInfo(){
@@ -199,7 +240,7 @@ $.ajax({
         }).then(function(response) {
     
           // console.log(queryURL);
-          // console.log(response);
+          console.log(response);
           $(".cityAndCountry").text(response.name + response.sys.country);
           $(".wind").text("windspeed :"+response.wind.speed);
           $(".humidity").text("humidity :"+response.main.humidity);
@@ -235,7 +276,7 @@ $.ajax({
              }
              else($("#windowRound").attr("style","background-color:black"));
             saveHistory(response);
-            deployHistory();
+            deployHistory(saveHistory);
 
             
 
