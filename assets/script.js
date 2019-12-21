@@ -165,9 +165,11 @@ function DisplayFiveDays(){
     searchHistory.push(savedCity);
     var historyLength =searchHistory.length;
     if(historyLength>5){
-      for(var i=0;i<4;i++){
+      for(var i=0;i<5;i++){
      var searchHistoryTemp=searchHistory[i+1];
-    };searchHistory[i]=searchHistoryTemp;
+     searchHistory[i]=searchHistoryTemp;
+    };
+    searchHistory.splice(5,1);
     console.log("Helooooooooserch")
     console.log(searchHistory);
     }
