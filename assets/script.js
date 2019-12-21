@@ -76,7 +76,10 @@ var weatherImage;
 // var todayTime=new Date();
 // alert(todayTime);
 
-
+$(document).ready(function(){
+  searchHistoryObject= JSON.parse(localStorage.getItem("searchHistoryObject"));
+  searchHistory=searchHistoryObject.array;
+  deployHistory()});
 function cityInput(event){
   event.preventDefault();
   event.stopPropagation();
@@ -160,29 +163,34 @@ function DisplayFiveDays(){
     var savedCity={"name":response.name,
               "info":response};
     searchHistory.push(savedCity);
-    if(searchHistory.length>5){
-      for(var i=0;i<searchHistory.length;i++){
-      searchHistory[i]=seachHistory[i+1]};
-    }
-    console.log("Heloooooooo")
+    var historyLength =searchHistory.length;
+    if(historyLength>5){
+      for(var i=0;i<4;i++){
+     var searchHistoryTemp=searchHistory[i+1];
+    };searchHistory[i]=searchHistoryTemp;
+    console.log("Helooooooooserch")
     console.log(searchHistory);
+    }
+    
     searchHistoryObject={"array":searchHistory};
-    console.log(searchHistoryObject);
+    // console.log(searchHistoryObject);
 
     localStorage.setItem("searchHistoryObject",JSON.stringify(searchHistoryObject) );
     searchHistoryObject= JSON.parse(localStorage.getItem("searchHistoryObject"));
     searchHistory=searchHistoryObject.array;
-    console.log("Heloooooooo2");
-    console.log(searchHistory);
+    // console.log("Heloooooooo2");
+    // console.log(searchHistory);
   }
   function deployHistory(){
     if (searchHistory!==null){
-    
+    $("#historyContainer").empty();
     
     for(var i=0; i<searchHistory.length; i++){
       var newBubble = $("<div>");
       newBubble.addClass("bubble");
+      newBubble.attr("value",i);
       var historyCityName = $("<div>");
+      historyCityName.addClass("historyCityName");
       historyCityName.html(searchHistory[i].name);
       newBubble.append(historyCityName);
       $("#historyContainer").append(newBubble);
@@ -191,7 +199,75 @@ function DisplayFiveDays(){
 
     }
   }}
+function showHistoryWeather(event){
+  
+  
 
+  event.stopPropagation();
+  event.preventDefault();
+  // alert("showhistory");
+var historyValue=$(this).attr("value");
+console.log(historyValue);
+  var lon = searchHistory[historyValue].info.coord.lon;
+  // console.log("logetude");
+  // console.log(lon);
+  var lat =searchHistory[historyValue].info.coord.lat;
+  // console.log(lat);
+  queryURL="https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+APIKey;
+
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function(response) {
+
+    // console.log(queryURL);
+    console.log(response);
+    $(".cityAndCountry").text(response.name + response.sys.country);
+    $(".wind").text("windspeed :"+response.wind.speed);
+    $(".humidity").text("humidity :"+response.main.humidity);
+     var tempF = Math.floor((response.main.temp-273.15)*1.80+31);
+     $(".temperature").text("temperature :"+tempF+"F");
+     var localHours = response.dt+response.timezone;
+    //  alert("localhours!"+localHours);
+
+     var localDay = new Date(localHours*1000).toUTCString();
+     localDay=moment.utc(localDay).format("LT");
+    
+
+      $(".locationTIme").text(localDay);
+      var localWeather=response.weather[0].main;
+      $(".rainSunSnowCloud").text("weather:" + localWeather);
+
+      if (response.weather[0].main=="Rain"){
+         
+        $("#windowImage").html("<img src='assets/img/rain.png'>");
+      }
+      else if (response. weather[0].main=="Snow"){
+        $("#windowImage").html("<img src='assets/img/snow.png'>")
+      }
+       else if(response. weather[0].main=="Clear"){
+        $("#windowImage").html("<img src='assets/img/sun.png'>") 
+       }
+       else if(response. weather[0].main=="Clouds"){
+        $("#windowImage").html("<img src='assets/img/cloud.png'>")
+       }
+
+       if(response.dt<=response.sys.sunset&&response.dt>=response.sys.sunrise){
+         $("#windowRound").attr("style","background-color:skyblue")
+       }
+       else{$("#windowRound").attr("style","background-color:black")};
+
+
+
+})};
+// function ddada(event){
+//   event.stopPropagation();
+//   event.preventDefault();
+  
+//   alert("dadada");
+// };
+
+  
   // var x = document.getElementById("demo");
   // function getLocation() {
   //     if (navigator.geolocation) {
@@ -215,6 +291,9 @@ function DisplayFiveDays(){
    
 
 
+  
+    $(document).on("click",".bubble",showHistoryWeather);
+    // $(document).on("click",".bubble",ddada);
   
 
   $("#openWindow").on("click",openWindow);
@@ -290,6 +369,8 @@ $.ajax({
 
 $("#choiceForm").on("submit",cityInput);
 $("#choiceForm").on("submit",DisplayFiveDays);
+
+// $("")
 
 
 //  var offset=parseInt(response.timezone);
