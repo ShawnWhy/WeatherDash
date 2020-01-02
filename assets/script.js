@@ -52,6 +52,7 @@
 // </html> 
 // JSON.parse(localStorage.getItem("searchHistory"))
 // var searchHistoryObject={};
+
 var myLocation;
 var searchHistoryObject ;
 var searchHisoryObject;
@@ -96,7 +97,7 @@ function DisplayFiveDays(){
     queryURL="https://api.openweathermap.org/data/2.5/forecast?zip="+zipInput+",us&appid="+APIKey
   }
   else if(longetudeInput&&latitudeInput){
-    queryURL="https://api.openweathermap.org/data/2.5/forecast?lat"+latitudeInput+"&lon="+longetudeInput+"&appid="+APIKey
+    queryURL="https://api.openweathermap.org/data/2.5/forecast?lat="+latitudeInput+"&lon="+longetudeInput+"&appid="+APIKey
   }
  else if(cityInput&&countryInput==""){
    queryURL = "https://api.openweathermap.org/data/2.5/forecast?q="+cityInput+" &appid=" + APIKey;alert(queryURL);}
@@ -284,12 +285,48 @@ console.log(historyValue);
   //                   "<br>Longitude: " + position.coords.longitude;    
 //  
   
-    // function getLocation(){
-    //   if (navigator.geolocation){
-    //     navigator.geolocation.getCurrentPosition(openWindow);
-    //   }
-    //   else(alert("no geolocation"));
+    function getLocation(event){
+      event.preventDefault();
+      event.stopPropagation();
+      if (navigator.geolocation){
+        console.log("has geo location");
+        navigator.geolocation.getCurrentPosition(deployWeather);}}
+
+    
     // }
+
+    function deployWeather(position){
+      var lat=position.coords.latitude;
+      var lon= position.coords.longitude;
+      var weatherQueryURL=  queryURL="https://api.openweathermap.org/data/2.5/weather?lat="+lat+"&lon="+lon+"&appid="+APIKey;
+      
+      
+      $.ajax({
+        url:weatherQueryURL,
+        method:"GET"
+      }).then(function(response){
+        console.log("weather");
+        console.log(response);
+        if(response.weather[0].main=="Rain"){
+          rain();
+        }
+        if(response.weather[0].main=="Snow"){
+          snow()
+        }
+        if(response.weather[0].main=="Clouds"){
+          cloudy()
+        }
+        if(response.weather[0].main=="Fog"){
+          fog()
+        }
+        
+        if(response.weather[0].main=="Clear"&&response.dt<=response.sys.sunset&&response.dt>=response.sys.sunrise){
+          sunShine()
+        }
+        else if(response.weather[0].main=="Clear"&&response.dt>response.sys.sunset){
+          stars()
+        }})}
+      
    
 
 
@@ -298,7 +335,7 @@ console.log(historyValue);
     // $(document).on("click",".bubble",ddada);
   
 
-  $("#openWindow").on("click",openWindow);
+ 
   // $("div :last-child").remove();
 //calls the API address and deploy the informatiom to the window
 function displayInfo(){
@@ -311,9 +348,9 @@ function displayInfo(){
    queryURL="https://api.openweathermap.org/data/2.5/weather?lat="+latitudeInput+"&lon="+longetudeInput+"&appid="+APIKey
  }
 else if(cityInput&&countryInput==""){
-  queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+cityInput+" &appid=" + APIKey;alert(queryURL);}
+  queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+cityInput+" &appid=" + APIKey;}
 else if(cityInput&&countryInput){
- queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+cityInput+","+countryInput+"&appid=" + APIKey;alert(queryURL);}
+ queryURL = "https://api.openweathermap.org/data/2.5/weather?q="+cityInput+","+countryInput+"&appid=" + APIKey;}
 
 $.ajax({
           url: queryURL,
@@ -358,19 +395,160 @@ $.ajax({
              else($("#windowRound").attr("style","background-color:black"));
             saveHistory(response);
             deployHistory(saveHistory);
-
-            
-
-
-          
-        });
+          });
         
         };
-      
 
+        function snow(){
+          setTimeout(function(){
+          var snowFlake = $("<div>");
+          snowFlake.addClass("snowFlake");
+          $("body").append(snowFlake);
+        },1000)
+        
+        setTimeout(function(){
+          var snowFlake = $("<div>");
+          snowFlake.addClass("snowFlake2");
+          $("body").append(snowFlake);
+          
+        },2000)
+        setTimeout(function(){
+          var snowFlake = $("<div>");
+          snowFlake.addClass("snowFlake3");
+          $("body").append(snowFlake);
+        },3000)
+        setTimeout(function(){
+          var snowFlake = $("<div>");
+          snowFlake.addClass("snowFlake4");
+          $("body").append(snowFlake);
+        },4000)
+        setTimeout(function(){
+          var snowFlake = $("<div>");
+          snowFlake.addClass("snowFlake5");
+          $("body").append(snowFlake);
+        },5000)
+        setTimeout(function(){
+          var snowFlake = $("<div>");
+          snowFlake.addClass("snowFlake6");
+          $("body").append(snowFlake);
+        },6000)
+        setTimeout(function(){
+          var snowFlake = $("<div>");
+          snowFlake.addClass("snowFlake7");
+          $("body").append(snowFlake);
+        },7000)
+        
+        }
+        function rain(){
+          setTimeout(function(){
+            var rainDrop = $("<div>");
+            rainDrop.addClass("rainDrop");
+            $("body").append(rainDrop);
+          },1500)
+          setTimeout(function(){
+          var rainDrop = $("<div>");
+          rainDrop.addClass("rainDrop2");
+          $("body").append(rainDrop);
+        },2000)
+        setTimeout(function(){
+        var rainDrop = $("<div>");
+        rainDrop.addClass("rainDrop3");
+        $("body").append(rainDrop);
+        },3000)
+        setTimeout(function(){
+          var rainDrop = $("<div>");
+          rainDrop.addClass("rainDrop4");
+          $("body").append(rainDrop);
+          },4500)
+        setTimeout(function(){
+          var rainDrop = $("<div>");
+          rainDrop.addClass("rainDrop5");
+          $("body").append(rainDrop);
+          },5500)
+        setTimeout(function(){
+          var rainDrop = $("<div>");
+          rainDrop.addClass("rainDrop6");
+          $("body").append(rainDrop);
+          },6000)
+        setTimeout(function(){
+          var rainDrop = $("<div>");
+          rainDrop.addClass("rainDrop7");
+          $("body").append(rainDrop);
+          },7500)
+        
+        }
+        function cloudy(){
+        var darkCloud = $("<div>");
+        darkCloud.addClass("cloud");
+        $("body").append(darkCloud);
+        var darkCloud = $("<div>");
+        darkCloud.addClass("cloud2");
+        $("body").append(darkCloud);
+        var darkCloud = $("<div>");
+        darkCloud.addClass("cloud3");
+        $("body").append(darkCloud);
+        }
+        
+        function sunShine(){
+          var sun= $("<div>");
+          sun.addClass("sun");
+          $("body").append(sun);
+        }
+        function fog(){
+        var fog =$("<div>");
+        fog.addClass("fog");
+        $("body").append(fog);
+        setTimeout(function(){
+          $("body").children().last().remove();
+        },5000)}
+        
+        function stars(){
+          setTimeout(function(){
+          var star= $("<div>");
+          star.addClass("star");
+          $("body").append(star);},1000);
+            setTimeout(function(){
+          var star= $("<div>");
+          star.addClass("star2");
+          $("body").append(star);},1000);
+            setTimeout(function(){
+          var star= $("<div>");
+          star.addClass("star3");
+          $("body").append(star);},1000);
+            setTimeout(function(){
+          var star= $("<div>");
+          star.addClass("star4");
+          $("body").append(star);},1000);
+            setTimeout(function(){
+          var star= $("<div>");
+          star.addClass("star5");
+          $("body").append(star);},2000);
+          setTimeout(function(){
+            var star= $("<div>");
+            star.addClass("star6");
+            $("body").append(star);},2000);
+            setTimeout(function(){
+          var star= $("<div>");
+          star.addClass("star7");
+          $("body").append(star);},2000);
+            setTimeout(function(){
+          var star= $("<div>");
+          star.addClass("star8");
+          $("body").append(star);},2000);
+         
+            }
+      
+function windowKnob(){
+  $("#openWindow").addClass("windowKnob")
+  setTimeout(function(){
+    $("#openWindow").removeClass("windowKnob");
+  },1000)
+}
 
 $("#choiceForm").on("submit",cityInput);
 $("#choiceForm").on("submit",DisplayFiveDays);
+$("#openWindow").on("click",getLocation);
+$("#openWindow").on("click",windowKnob);
 
 // $("")
 

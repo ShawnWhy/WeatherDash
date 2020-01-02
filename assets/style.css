@@ -45,8 +45,11 @@ height:20px;
     background-color:darkgoldenrod;
     color:lightpink;
     border-radius:30px;
+    position:relative;
+    z-index:20;
 
 }
+
 #weatherSubmit{
     background-color:darkgoldenrod;
     color:lightpink;
@@ -55,6 +58,7 @@ height:20px;
     
     margin-top:5px;
     margin-left:4%;
+    clear:both;
 }
 #shipContainer{
     text-align:center;
@@ -82,9 +86,7 @@ background: rgba(255, 255, 255, 0.3)
 
 }
 
-.openWindow{
-   transform :rotate(30deg);
-    transform-origin:right; }
+
 
 .windowDisplay{
 margin:4px;
@@ -221,4 +223,492 @@ font-size:10px;
 
 .bubble:hover{
     background-color:lightsalmon;
+}
+
+.snowFlake{
+    position:absolute;
+    left:10%;
+z-index:5;
+height:10px;
+width:10px;
+background-color:white;
+border:1px solid rgba(0, 0, 0, 0.5);
+animation-name: snowFall;
+animation-iteration-count: 2;
+animation-duration:3s;
+animation-fill-mode: forwards;
+border-radius:50%;
+}
+.snowFlake2{
+    border-radius:50%;
+    position:absolute;
+    left:30%;
+z-index:5;
+height:10px;
+width:10px;
+background-color:white;
+border:1px solid rgba(0, 0, 0, 0.5);
+animation-name: snowFall;
+animation-iteration-count: 2;
+animation-duration:3s;
+animation-fill-mode: forwards;
+}
+.snowFlake5{
+    border-radius:50%;
+    position:absolute;
+    left:50%;
+z-index:5;
+height:10px;
+width:10px;
+background-color:white;
+border:1px solid rgba(0, 0, 0, 0.5);
+animation-name: snowFall;
+animation-iteration-count: 2;
+animation-duration:3s;
+animation-fill-mode: forwards;
+}
+.snowFlake4{
+    border-radius:50%;
+    position:absolute;
+    left:80%;
+z-index:5;
+height:10px;
+width:10px;
+background-color:white;
+border:1px solid rgba(0, 0, 0, 0.5);
+animation-name: snowFall;
+animation-iteration-count: 2;
+animation-duration:3s;
+animation-fill-mode: forwards;
+}
+.snowFlake5{
+    border-radius:50%;
+    position:absolute;
+    left:35%;
+z-index:5;
+height:10px;
+width:10px;
+background-color:white;
+border:1px solid rgba(0, 0, 0, 0.5);
+animation-name: snowFall;
+animation-iteration-count: 2;
+animation-duration:3s;
+animation-fill-mode: forwards;
+}
+.snowFlake6{
+    border-radius:50%;
+    position:absolute;
+    left:90%;
+z-index:5;
+height:10px;
+width:10px;
+background-color:white;
+border:1px solid rgba(0, 0, 0, 0.5);
+animation-name: snowFall;
+animation-iteration-count: 2;
+animation-duration:3s;
+animation-fill-mode: forwards;
+}
+.snowFlake7{
+    border-radius:50%;
+    position:absolute;
+    left:50%;
+z-index:5;
+height:10px;
+width:10px;
+background-color:white;
+border:1px solid rgba(0, 0, 0, 0.5);
+animation-name: snowFall;
+animation-iteration-count: 2;
+animation-duration:3s;
+animation-fill-mode: forwards;
+
+}
+
+.rainDrop{
+    position:absolute;
+    left:30%;
+    height:20px;
+    width:3px;
+
+    animation-name:rain;
+    animation-iteration-count:4;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+    transform-origin:bottom;
+    z-index:20;
+
+}
+
+.rainDrop2{
+    position:absolute;
+    left:60%;
+    height:20px;
+    width:3px;
+
+    animation-name:rain;
+    animation-iteration-count:4;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+    transform-origin:bottom;
+    z-index:20;
+
+}
+
+.rainDrop3{
+    position:absolute;
+    left:80%;
+    height:20px;
+    width:3px;
+
+    animation-name:rain;
+    animation-iteration-count:4;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+    transform-origin:bottom;
+    z-index:20;
+
+}
+
+.rainDrop4{
+    position:absolute;
+    left:20%;
+    height:20px;
+    width:3px;
+
+    animation-name:rain;
+    animation-iteration-count:4;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+    transform-origin:bottom;
+    z-index:20;
+
+}
+
+.rainDrop5{
+    position:absolute;
+    left:75%;
+    height:20px;
+    width:3px;
+
+
+    animation-name:rain;
+    animation-iteration-count:4;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+    transform-origin:bottom;
+    z-index:20;
+
+}
+
+.rainDrop6{
+    position:absolute;
+    left:50%;
+    height:20px;
+    width:3px;
+
+
+    animation-name:rain;
+    animation-iteration-count:4;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+    transform-origin:bottom;
+    z-index:20;
+
+}
+
+.rainDrop7{
+    position:absolute;
+    left:90%;
+    height:20px;
+    width:3px;
+
+    animation-name:rain;
+    animation-iteration-count:4;
+    animation-duration:1s;
+    animation-fill-mode:forwards;
+    transform-origin:center;
+    z-index:20;
+}
+
+.cloud{
+    position:absolute;
+    left:-20%;
+    top:10%;
+    height:300px;
+    width:2000px;
+    background-color:grey;
+    border-radius:50%;
+    opacity: 0.3;
+    border:10px solid lightgray;
+    animation-name:cloud;
+    transition-timing-function: linear;
+    animation-iteration-count:1;
+    animation-duration:9s;
+    animation-fill-mode:forwards;
+    z-index:20;
+}
+.cloud2{
+    position:absolute;
+    right:-20%;
+    top:45%;
+    height:300px;
+    width:2000px;
+    background-color:grey;
+    border-radius:50%;
+    opacity: 0.3;
+    border:10px solid lightgray;
+    animation-name:cloud2;
+    animation-iteration-count:1;
+    animation-duration:9s;
+    transition-timing-function: linear;
+    animation-fill-mode:forwards;
+    z-index:20;
+}
+
+.cloud3{
+    position:absolute;
+    left:-20%;
+    top:70%;
+    height:300px;
+    width:2000px;
+    border-radius:50%;
+    background-color:grey;
+    opacity: 0.3;
+    border:10px solid lightgray;
+    animation-name:cloud;
+    transition-timing-function: linear;
+    animation-iteration-count:1;
+    animation-duration:9s;
+    animation-fill-mode:forwards;
+    z-index:20;
+}
+@keyframes cloud{
+    0%{left:-20%;}
+    99%{left:120%;
+        transform:scale(1,1);}
+    100%{visibility:hidden;
+        transform:scale(0,0)}}
+@keyframes cloud2{
+    0%{right:-20%}
+    99%{right:120%;
+        transform:scale(1,1);}
+    100%{visibility:hidden;
+        transform:scale(0,0)}}
+@keyframes rain{
+    0%{top:0%;
+        visibility:visible;
+        width:1px;
+        height:15px;
+        border:0px;
+        border:1px solid grey;
+        border-radius:50%}
+    60%{border-radius:50%;
+        visibility:visible;
+        width:2px;
+        height:15px;
+        background-color:grey;
+        top:90%;}
+    61%{visibility:hidden;
+        transform:scale(1,1);
+        background-color:white;
+        border:1px solid grey;}
+     99%{visibility:visible;
+        top:80%;
+        transform:scale(10,.5);
+        background-color:white;
+        border:1px solid grey;
+        border-radius:50%;
+        top:90%;}
+    100%{visibility:hidden}}
+
+@keyframes snowFall{
+    0%{top:0%; }
+    99%{top:90%;}
+    100%{visibility: hidden;}
+
+}
+.sun{
+    position:absolute;
+    left:40%;
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    opacity:0.6;
+    background-color:lightgrey;
+    border:5px solid orange;
+    animation-name:sun;
+    transition-timing-function: ease-in;
+    animation-iteration-count:1;
+    animation-duration:6s;
+    animation-fill-mode:forwards;
+    z-index:20;
+}
+
+@keyframes sun{
+    0%{bottom:-70%;
+        transform:scale(10,10);
+    background-color:orange;}
+    99%{bottom:100%;
+        transform:scale(.2,.2);
+        background-color:whitesmoke;}
+    100%{visibility:hidden}
+}
+@keyframes fog{
+0%{opacity:0.8;}
+/* 25%{opacity:0.3;}
+50%{opacity: 0.9;} */
+99%{ opacity:0;}
+100% {visibility:hidden}
+}
+
+.fog{
+    position:absolute;
+    bottom:0px;
+    width: 100%;
+    height:100%;
+    opacity: 0.2;
+    background-color:gray;
+    z-index:20;
+    animation-name:fog;
+    transition-timing-function: ease-in-out;
+    animation-iteration-count:1;
+    animation-duration:5s;
+    animation-fill-mode:forwards;
+    
+}
+
+.star{
+    position:absolute;
+    right:30%;
+    top:20%;
+    border-radius:50%;
+    animation-name:star;
+    transition-timing-function: linear;
+    animation-iteration-count:6;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    transform-origin:center;
+    z-index:20;
+}
+.star2{
+    position:absolute;
+    right:60%;
+    top:17%;
+    border-radius:50%;
+    animation-name:star;
+    transition-timing-function: linear;
+    animation-iteration-count:6;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    transform-origin:center;
+    z-index:20;
+}
+.star3{
+    position:absolute;
+    right:50%;
+    top:25%;
+    border-radius:50%;
+    animation-name:star;
+    transition-timing-function: linear;
+    animation-iteration-count:6;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    transform-origin:center;
+    z-index:20;
+}
+.star4{
+    position:absolute;
+    right:20%;
+    top:10%;
+    border-radius:50%;
+    animation-name:star;
+    transition-timing-function: linear;
+    animation-iteration-count:6;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    transform-origin:center;
+    z-index:20;
+}
+.star5{
+    position:absolute;
+    right:60%;
+    top:30%;
+    border-radius:50%;
+    animation-name:star;
+    transition-timing-function: linear;
+    animation-iteration-count:6;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    transform-origin:center;
+    z-index:20;
+}
+.star6{
+    position:absolute;
+    right:80%;
+    top:44%;
+    border-radius:50%;
+    animation-name:star;
+    transition-timing-function: linear;
+    animation-iteration-count:6;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    transform-origin:center;
+    z-index:20;
+}
+.star7{
+    position:absolute;
+    right:26%;
+    top:22%;
+    border-radius:50%;
+    animation-name:star;
+    transition-timing-function: linear;
+    animation-iteration-count:6;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    transform-origin:center;
+    z-index:20;
+}
+.star8{
+    position:absolute;
+    right:80%;
+    top:30%;
+    border-radius:50%;
+    animation-name:star;
+    transition-timing-function: linear;
+    animation-iteration-count:6;
+    animation-duration:2s;
+    animation-fill-mode:forwards;
+    transform-origin:center;
+    z-index:20;
+}
+
+@keyframes star{
+0%{width:1px;
+    height:1px;
+    background-color:lightgrey}
+50%{width:3px;
+    height:3px;
+    background-color:white;}
+99%{width:1px;
+    height:1px;
+    background-color:lightgrey}
+100%{visibility:hidden}
+
+}
+body{
+    overflow:hidden;
+    z-index:10;
+}
+.windowKnob{
+
+    animation-name:windowKnob;
+    transform-origin:left;
+    animation-duration:0.5s;
+
+}
+
+@keyframes windowKnob{
+    0%{transform:rotate(0deg)}
+    100%{transform:rotate(-75deg)}
 }
