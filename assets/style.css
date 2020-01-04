@@ -686,13 +686,13 @@ animation-fill-mode: forwards;
 @keyframes star{
 0%{width:1px;
     height:1px;
-    background-color:lightgrey}
+    background-color:lightsteelblue;}
 50%{width:3px;
     height:3px;
-    background-color:white;}
+    background-color:lightgoldenrodyellow;}
 99%{width:1px;
     height:1px;
-    background-color:lightgrey}
+    background-color:lightsalmon;}
 100%{visibility:hidden}
 
 }
@@ -701,14 +701,16 @@ body{
     z-index:10;
 }
 .windowKnob{
+    z-index:20;
 
     animation-name:windowKnob;
-    transform-origin:left;
-    animation-duration:0.5s;
+    transform-origin:right;
+    animation-duration:1s;
 
 }
 
 @keyframes windowKnob{
     0%{transform:rotate(0deg)}
-    100%{transform:rotate(-75deg)}
+    50%{transform:rotate(75deg)}
+    100%{transform:rotate(0deg)}
 }
